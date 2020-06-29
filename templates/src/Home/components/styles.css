@@ -1,0 +1,96 @@
+.container__home {
+  width: 100%;
+  height: 100vh;
+}
+
+.home__layout {
+  background-image: url('../../../assets/images/background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-position: bottom;
+}
+
+.layout__title {
+  color: #FFFFFF;
+  margin-top: -80px;
+}
+
+.layout__container-logo {
+  margin-top: 80px;
+}
+
+.logo-koombea, .logo-react {
+  width: 150px;
+}
+
+.logo-koombea {
+  margin-right: 44px;
+}
+
+.logo-react {
+  margin-left: 44px;
+}
+
+.layout__container-logo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout__line {
+  border: 1px solid hsla(0, 0%, 85%, 0.187);
+  height: 90px;
+}
+
+.layout__name-project{
+  font-size: 20px;
+  color: white;
+  position: relative;
+  top: 50px;
+}
+
+.layout__name-project span{
+  color: #0BD8A2;
+}
+
+.home__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20%;
+  background-color: #001E24;
+}
+
+.footer__title {
+  color: #0BD8A2;
+  font-size: 12px;
+}
+
+.logo-koombea {
+  -webkit-animation: rotation 15s infinite linear;
+  animation: rotation 15s infinite linear;
+}
+
+.logo-react {
+  -webkit-animation: rotation 12s infinite linear;
+  animation: rotation 12s infinite linear;
+}
+
+@keyframes rotation{
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
