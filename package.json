@@ -1,0 +1,29 @@
+{
+  "name": "react-express-app",
+  "version": "1.0.0",
+  "description": "CLI",
+  "main": "index.js",
+  "bin": {
+    "react-express-app": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "react-express-app"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "author": "Jesus Hernandez <jesusbeckan@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "execa": "^4.0.2",
+    "figlet": "^1.4.0",
+    "inquirer": "^7.2.0",
+    "listr": "^0.14.3",
+    "minimist": "^1.2.5"
+  }
+}
