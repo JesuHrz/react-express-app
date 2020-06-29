@@ -25,6 +25,7 @@
     "inquirer": "^7.2.0",
     "listr": "^0.14.3",
     "minimist": "^1.2.5",
-    "husky": "^4.2.5"
+    "husky": "^4.2.5",
+    "validate-npm-package-name": "^3.0.0"
   }
 }
