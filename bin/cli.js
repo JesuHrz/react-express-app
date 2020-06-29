@@ -9,26 +9,21 @@ const { message, checkPackageName } = require('../lib')
 const argv = minimist(process.argv.slice(2))
 
 async function init () {
-  console.log()
-  const msg = await message('React Express App')
-  console.log(chalk.bold.cyan(msg))
-  console.log()
-
-  const packageName = argv._.shift()
-
-  if (packageName === undefined) {
-    console.log(chalk.red(
-      'You need to add a name to your project \n' +
-      'Example: react-express-app <project-name>'
-    ))
+  try {
     console.log()
+    const msg = await message('React Express App')
+    console.log(chalk.bold.cyan(msg))
+  } catch (e) {
+    console.error(chalk.red(e))
     process.exit(1)
   }
+
+  const packageName = argv._.shift()
 
   checkPackageName(packageName)
 }
 
 init().catch(err => {
-  console.log(err)
+  console.error(err)
   process.exit(1)
 })
