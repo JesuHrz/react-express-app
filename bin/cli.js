@@ -15,7 +15,6 @@ const {
 
 const argv = minimist(process.argv.slice(2))
 const templatePath = path.join(__dirname, '../templates')
-const currentPath = process.cwd()
 
 async function init () {
   try {
@@ -24,19 +23,49 @@ async function init () {
 
     console.log()
     console.log(chalk.bold.cyan(msg))
+    console.log()
 
     checkPackageName(projectName)
+    const root = path.resolve(projectName)
     const { redux, preprocessor } = await handlePrompts()
+
+    console.log()
+    console.log(
+      chalk.bold.white('Creating project with React in:'),
+      chalk.green(root)
+    )
 
     const tasks = new Listr([
       {
         title: 'Procesing files',
-        task: async () => {
-          await createDirectoriesAndFiles(
-            templatePath,
-            `${currentPath}/${projectName}`,
-            { projectName, redux }
-          )
+        task: async (_, task) => {
+          try {
+            await createDirectoriesAndFiles(
+              templatePath,
+              root,
+              { projectName, redux, preprocessor }
+            )
+          } catch (e) {
+            task.skip(e.message)
+            throw new Error(e.message)
+          }
+        }
+      },
+      {
+        title: 'Initializing a git repository',
+        task: async (ctx, task) => {
+          try {
+            const { stdout } = await execa('git', ['init'], { cwd: root })
+            ctx.git = stdout
+          } catch (e) {
+            if (e.code === 'ENOENT') {
+              const message = `Command failed: ${e.command}. Try installing git`
+              task.skip(message)
+              throw new Error(message)
+            }
+            task.skip(e.stderr)
+            throw new Error(e.stderr)
+          }
         }
       }
     ])
