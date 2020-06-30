@@ -15,7 +15,7 @@ const Home = props => {
           <div className='layout__line' />
           <img className='logo-react' src={logoReact} />
         </div>
-        <p className='layout__name-project'>Your Project: <span><%= appname %></span></p>
+        <p className='layout__name-project'>Your Project: <span><%= projectName %></span></p>
       </div>
       <div className='home__footer'>
         <p className='footer__title'>{`2007 - ${new Date().getFullYear()} Koombea, Inc. All Rights Reserved`}</p>

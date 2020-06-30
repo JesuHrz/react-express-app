@@ -2,14 +2,20 @@
 
 const minimist = require('minimist')
 const chalk = require('chalk')
+const execa = require('execa')
+const Listr = require('listr')
+const path = require('path')
 
 const {
   handleMessage,
   checkPackageName,
-  handlePrompts
+  handlePrompts,
+  createDirectoriesAndFiles
 } = require('../lib')
 
 const argv = minimist(process.argv.slice(2))
+const templatePath = path.join(__dirname, '../templates')
+const currentPath = process.cwd()
 
 async function init () {
   try {
@@ -21,6 +27,20 @@ async function init () {
 
     checkPackageName(packageName)
     const { redux, preprocessor } = await handlePrompts()
+
+    const tasks = new Listr([
+      {
+        title: 'Procesing files',
+        task: async () => {
+          await createDirectoriesAndFiles(
+            templatePath,
+            `${currentPath}/${packageName}`,
+            { projectName: 'project-name', redux }
+          )
+        }
+      }
+    ])
+    await tasks.run()
   } catch (e) {
     console.error(chalk.red(e.stack))
     process.exit(1)
