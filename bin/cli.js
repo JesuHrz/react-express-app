@@ -19,13 +19,13 @@ const currentPath = process.cwd()
 
 async function init () {
   try {
-    const packageName = argv._.shift()
+    const projectName = argv._.shift()
     const msg = await handleMessage('React Express App')
 
     console.log()
     console.log(chalk.bold.cyan(msg))
 
-    checkPackageName(packageName)
+    checkPackageName(projectName)
     const { redux, preprocessor } = await handlePrompts()
 
     const tasks = new Listr([
@@ -34,8 +34,8 @@ async function init () {
         task: async () => {
           await createDirectoriesAndFiles(
             templatePath,
-            `${currentPath}/${packageName}`,
-            { projectName: 'project-name', redux }
+            `${currentPath}/${projectName}`,
+            { projectName, redux }
           )
         }
       }
