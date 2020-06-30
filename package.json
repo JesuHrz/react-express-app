@@ -12,7 +12,12 @@
   },
   "keywords": [
     "cli",
-    "react-express-app"
+    "react-express-app",
+    "boilerplate",
+    "react",
+    "redux",
+    "hooks",
+    "builder"
   ],
   "author": {
     "name": "Jesus Hernandez",
