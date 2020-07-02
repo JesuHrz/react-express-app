@@ -68,11 +68,24 @@ async function init () {
             throw new Error(e)
           }
         }
+      },
+      {
+        title: 'Installing dependencies with npm',
+        task: async (ctx, task) => {
+          try {
+            const { stdout } = await runCommand('npm', ['install'], { cwd: root })
+            ctx.npm = stdout
+          } catch (e) {
+            task.skip(e.message)
+            throw new Error(e)
+          }
+        }
       }
     ])
-    const { git } = await tasks.run()
+    const { git, npm } = await tasks.run()
     console.log()
     console.log(chalk.green(git))
+    console.log(npm)
 
     console.log()
   } catch (e) {
