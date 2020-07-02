@@ -87,6 +87,11 @@ async function init () {
     console.log(chalk.green(git))
     console.log(npm)
 
+    await runCommand('git', ['add', '.'], { cwd: root })
+    await runCommand('git', ['commit', '-m', 'Project initialized with React Express App'], { cwd: root })
+
+    console.log()
+    console.log(chalk.green('First commit created.'))
     console.log()
   } catch (e) {
     console.log()
