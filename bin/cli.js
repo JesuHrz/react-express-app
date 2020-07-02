@@ -2,7 +2,6 @@
 
 const minimist = require('minimist')
 const chalk = require('chalk')
-const execa = require('execa')
 const Listr = require('listr')
 const path = require('path')
 
@@ -10,7 +9,8 @@ const {
   handleMessage,
   checkPackageName,
   handlePrompts,
-  createDirectoriesAndFiles
+  createDirectoriesAndFiles,
+  runCommand
 } = require('../lib')
 
 const argv = minimist(process.argv.slice(2))
@@ -30,6 +30,7 @@ async function init () {
     const { redux, preprocessor } = await handlePrompts()
 
     console.log()
+    console.log(chalk.yellow('This process could take a couple of minutes.'))
     console.log(
       chalk.bold.white('Creating project with React in:'),
       chalk.green(root)
@@ -55,23 +56,24 @@ async function init () {
         title: 'Initializing a git repository',
         task: async (ctx, task) => {
           try {
-            const { stdout } = await execa('git', ['init'], { cwd: root })
+            const { stdout } = await runCommand('git', ['init'], { cwd: root })
             ctx.git = stdout
           } catch (e) {
-            if (e.code === 'ENOENT') {
-              const message = `Command failed: ${e.command}. Try installing git`
-              task.skip(message)
-              throw new Error(message)
-            }
-            task.skip(e.stderr)
-            throw new Error(e.stderr)
+            task.skip(e.message)
+            throw new Error(e)
           }
         }
       }
     ])
-    await tasks.run()
+    const { git } = await tasks.run()
+    console.log()
+    console.log(chalk.green(git))
+
+    console.log()
   } catch (e) {
+    console.log()
     console.error(chalk.red(e.stack))
+    console.log()
     process.exit(1)
   }
 }
