@@ -10,6 +10,7 @@ const {
   checkPackageName,
   handlePrompts,
   createDirectoriesAndFiles,
+  removeDirectoriesAndFiles,
   runCommand
 } = require('../lib')
 
@@ -28,6 +29,10 @@ async function init () {
     checkPackageName(projectName)
     const root = path.resolve(projectName)
     const { redux, preprocessor } = await handlePrompts()
+
+    if (process.env.NODE_ENV === 'development') {
+      await removeDirectoriesAndFiles(projectName)
+    }
 
     console.log()
     console.log(chalk.yellow('This process could take a couple of minutes.'))
