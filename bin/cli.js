@@ -11,7 +11,8 @@ const {
   handlePrompts,
   createDirectoriesAndFiles,
   removeDirectoriesAndFiles,
-  runCommand
+  runCommand,
+  scriptLogs
 } = require('../lib')
 
 const argv = minimist(process.argv.slice(2))
@@ -35,7 +36,7 @@ async function init () {
     }
 
     console.log()
-    console.log(chalk.yellow('This process could take a couple of minutes.'))
+    console.log(chalk.yellow('This process could take a couple of seconds.'))
     console.log(
       chalk.bold.white('Creating project with React in:'),
       chalk.green(root)
@@ -88,10 +89,25 @@ async function init () {
     console.log(npm)
 
     await runCommand('git', ['add', '.'], { cwd: root })
-    await runCommand('git', ['commit', '-m', 'Project initialized with React Express App'], { cwd: root })
+    await runCommand(
+      'git',
+      ['commit', '-m', 'Project initialized with React Express App'],
+      { cwd: root }
+    )
 
     console.log()
     console.log(chalk.green('First commit created.'))
+    console.log()
+
+    console.log(
+      chalk.bold.white('Your project has been successfully created at:'),
+      chalk.green(root)
+    )
+    console.log()
+
+    scriptLogs(projectName)
+
+    console.log(chalk.green('Enjoy it 🧑🏻‍💻!'))
     console.log()
   } catch (e) {
     console.log()
