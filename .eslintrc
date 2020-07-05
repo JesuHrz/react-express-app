@@ -1,0 +1,26 @@
+{
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "no-unexpected-multiline": "off",
+    "no-else-return": ["error", { "allowElseIf": true }],
+    "no-async-promise-executor": ["off"],
+    "max-len": ["error", {
+      "code": 80,
+      "ignoreRegExpLiterals": true,
+      "ignoreUrls": true,
+      "tabWidth": 2
+    }]
+  },
+  "plugins": ["ejs"],
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2017": true
+  }
+}
