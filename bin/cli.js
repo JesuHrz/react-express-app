@@ -74,7 +74,11 @@ async function init () {
         title: 'Installing dependencies with npm',
         task: async (ctx, task) => {
           try {
-            const { stdout } = await runCommand('npm', ['install'], { cwd: root })
+            const { stdout } = await runCommand(
+              'npm',
+              ['install'],
+              { cwd: root }
+            )
             ctx.npm = stdout
           } catch (e) {
             task.skip(e.message)

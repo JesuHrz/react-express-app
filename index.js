@@ -18,7 +18,8 @@ if (process.env.NODE_ENV === 'development') {
 if (major < 10) {
   console.log(chalk.red(
     `Your node version is ${major}, ` +
-    'in order to use react you need to have a node version equal or higher than 10.'
+    'in order to use react you need to have a node version' +
+    'equal or higher than 10.'
   ))
   process.exit(1)
 }
