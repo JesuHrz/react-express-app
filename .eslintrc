@@ -2,14 +2,27 @@
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "impliedStrict": true
     }
   },
-  "extends": ["eslint:recommended"],
+  "extends": ["eslint:recommended", "standard"],
   "rules": {
+    "strict": "off",
     "no-unexpected-multiline": "off",
     "no-else-return": ["error", { "allowElseIf": true }],
-    "no-async-promise-executor": ["off"],
+    "no-async-promise-executor": "off",
+    "no-trailing-spaces": "error",
+    "space-infix-ops": "error",
+    "computed-property-spacing": "error",
+    "space-before-function-paren": "error",
+    "arrow-spacing": "error",
+    "no-multi-spaces": "error",
+    "eol-last": ["error", "always"],
+    "comma-dangle": ["error", "never"],
+    "space-before-blocks": ["error", "always"],
+    "space-in-parens": ["error", "never"],
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "key-spacing": ["error", { "beforeColon": false }],
     "max-len": ["error", {
       "code": 80,
       "ignoreRegExpLiterals": true,
