@@ -47,11 +47,11 @@ async function init () {
         title: 'Procesing files',
         task: async (_, task) => {
           try {
-            await createDirectoriesAndFiles(
-              templatePath,
-              root,
-              { projectName, redux, preprocessor }
-            )
+            await createDirectoriesAndFiles(templatePath, root, {
+              projectName,
+              redux,
+              preprocessor
+            })
           } catch (e) {
             task.skip(e.message)
             throw new Error(e.message)
@@ -74,11 +74,9 @@ async function init () {
         title: 'Installing dependencies with npm',
         task: async (ctx, task) => {
           try {
-            const { stdout } = await runCommand(
-              'npm',
-              ['install'],
-              { cwd: root }
-            )
+            const { stdout } = await runCommand('npm', ['install'], {
+              cwd: root
+            })
             ctx.npm = stdout
           } catch (e) {
             task.skip(e.message)

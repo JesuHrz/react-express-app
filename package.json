@@ -9,6 +9,8 @@
   "scripts": {
     "publish": "npm publish",
     "lint": "eslint .",
+    "format": "prettier-standard --format",
+    "valite": "npm run format && npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -51,7 +53,18 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "lint-staged": "^10.2.11"
+    "lint-staged": "^10.2.11",
+    "prettier-standard": "^16.3.0"
+  },
+  "lint-staged": {
+    "*.{json}": [
+      "prettier-standard --format"
+    ],
+    "*.{js,jsx,ts}": [
+      "prettier-standard --format",
+      "eslint .",
+      "git add"
+    ]
   },
   "license": "MIT"
 }
