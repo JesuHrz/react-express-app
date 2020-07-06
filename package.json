@@ -9,7 +9,7 @@
   "scripts": {
     "publish": "npm publish",
     "lint": "eslint .",
-    "format": "prettier-standard --format",
+    "format": "prettier-standard --lint \"**/*.{js,jsx,ts,json}\"",
     "valite": "npm run format && npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -58,12 +58,11 @@
   },
   "lint-staged": {
     "*.{json}": [
-      "prettier-standard --format"
+      "prettier-standard '**/*.{json}'"
     ],
     "*.{js,jsx,ts}": [
-      "prettier-standard --format",
-      "eslint .",
-      "git add"
+      "prettier-standard --lint \"**/*.{js,jsx,ts,json}\"",
+      "eslint ."
     ]
   },
   "license": "MIT"
