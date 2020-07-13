@@ -10,7 +10,7 @@
     "publish": "npm publish",
     "lint": "eslint .",
     "format": "prettier-standard --lint \"**/*.{js,jsx,ts,json}\"",
-    "valite": "npm run format && npm run lint",
+    "validate": "npm run format && npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -57,11 +57,10 @@
     "prettier-standard": "^16.3.0"
   },
   "lint-staged": {
-    "*.{json}": [
-      "prettier-standard '**/*.{json}'"
+    "*.{js,json,md}": [
+      "prettier-standard --lint"
     ],
-    "*.{js,jsx,ts}": [
-      "prettier-standard --lint \"**/*.{js,jsx,ts,json}\"",
+    "*.{js}": [
       "eslint ."
     ]
   },
