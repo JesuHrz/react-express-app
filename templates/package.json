@@ -8,7 +8,7 @@
     "build:prod": "webpack --env.NODE_ENV=production",
     "lint": "eslint .",
     "format": "prettier-standard --lint \"**/*.{js,jsx,ts,json}\"",
-    "valite": "npm run format && npm run lint"
+    "validate": "npm run format && npm run lint"
   },
   "author": "",
   "license": "",
@@ -58,12 +58,11 @@
     "webpack-dev-server": "^3.7.2"
   },
   "lint-staged": {
-    "*.{json}": [
-      "prettier-standard '**/*.{json}'"
+    "*.{js,jsx,json,css,less,scss,ts,tsx,md}": [
+      "prettier-standard --lint"
     ],
-    "*.{js,jsx,ts}": [
-      "prettier-standard --lint \"**/*.{js,jsx,ts,json}\"",
-      "eslint ."
+    "*.{js}": [
+      "eslint"
     ]
   }
 }
