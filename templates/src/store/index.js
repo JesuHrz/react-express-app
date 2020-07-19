@@ -6,9 +6,7 @@ import rootReducer from '../reducers'
 const initialState = {}
 let composeEnhancers = compose
 
-let middlewares = [
-  promiseMiddleware()
-]
+let middlewares = [promiseMiddleware]
 
 if (process.env.NODE_ENV === 'development') {
   const { createLogger } = require('redux-logger')

@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import Router from './Router/container/Router'
+import App from './App'
 
-const App = document.getElementById('app')
+const app = document.getElementById('app')
 
-render(<Router />, App)
+render(<App />, app)

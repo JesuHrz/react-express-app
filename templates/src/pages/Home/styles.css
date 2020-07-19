@@ -1,0 +1,30 @@
+.home {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.home .title {
+  margin-top: 140px;
+  flex-basis: 100%;
+  font-size: 60px;
+  color: white;
+  text-align: center;
+}
+.home .quote {
+  color: white;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.quote span {
+  color: rgb(92, 230, 139);
+}
+
+.🧑🏻‍💻 {
+  color: white;
+  font-size: 22px;
+  margin-top: 22px;
+}

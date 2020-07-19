@@ -1,8 +1,8 @@
-import { SET_TITLE } from '../reducers/app'
+import { SET_EXAMPLE } from 'reducers/example'
 
 export function setTitle (title) {
   return {
-    type: SET_TITLE,
+    type: SET_EXAMPLE,
     payload: title
   }
 }

@@ -1,0 +1,36 @@
+.instructions {
+  color: white;
+  margin-top: 30px;
+  padding-bottom: 30px;
+}
+
+.instructions__title {
+  color: white;
+  font-size: 20px;
+}
+
+.menu {
+  list-style: none;
+  padding-top: 20px;
+}
+
+.menu li::before {
+  content: "\2022";
+  color: rgb(92, 230, 139);
+  font-weight: bold;
+  margin-left: -1em;
+  position: absolute;
+}
+
+.menu .menu__item {
+  font-size: 20px;
+  color: white;
+}
+
+.menu .menu__item > p {
+  padding-bottom: 10px;
+}
+
+.menu__item .item__command {
+  color: rgb(92, 230, 139);
+}
